@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+  currentPath: string;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -31,6 +32,14 @@ export const Container = styled.div<ContainerProps>`
           opacity: 0.6;
         }
       }
+
+      ${({ currentPath }) =>
+        css`
+          a[href="${currentPath}"] {
+            color: #ff872c;
+            font-weight: 700;
+          }
+        `}
     }
   }
 `;
