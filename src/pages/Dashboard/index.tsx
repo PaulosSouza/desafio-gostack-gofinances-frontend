@@ -59,10 +59,7 @@ const Dashboard: React.FC = () => {
               <p>Entradas</p>
               <img src={income} alt="Income" />
             </header>
-            <h1 data-testid="balance-income">
-              R$
-              {formatValue(balance.income)}
-            </h1>
+            <h1 data-testid="balance-income">{formatValue(balance.income)}</h1>
           </Card>
           <Card>
             <header>
@@ -70,7 +67,6 @@ const Dashboard: React.FC = () => {
               <img src={outcome} alt="Outcome" />
             </header>
             <h1 data-testid="balance-outcome">
-              R$
               {formatValue(balance.outcome)}
             </h1>
           </Card>
@@ -103,7 +99,7 @@ const Dashboard: React.FC = () => {
                   <tr key={transaction.id}>
                     <td className="title">{transaction.title}</td>
                     <td className={transaction.type}>
-                      R$
+                      {transaction.type === 'outcome' && '- '}
                       {formatValue(transaction.value)}
                     </td>
                     <td>{transaction.category.title}</td>
