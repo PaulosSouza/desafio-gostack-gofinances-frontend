@@ -36,8 +36,14 @@ export const Container = styled.div<ContainerProps>`
       ${({ currentPath }) =>
         css`
           a[href="${currentPath}"] {
-            color: #ff872c;
+            color: #fff;
             font-weight: 700;
+            border-bottom: 2px solid #FF872C;
+            padding-bottom: 8px;
+
+            &:hover {
+              opacity: initial;
+            }
           }
         `}
     }
