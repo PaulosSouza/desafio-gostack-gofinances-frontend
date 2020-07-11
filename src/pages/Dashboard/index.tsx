@@ -41,9 +41,9 @@ const Dashboard: React.FC = () => {
         (transaction: Transaction) => ({
           ...transaction,
           formattedValue: formatValue(transaction.value),
-          formattedDate: Intl.DateTimeFormat('pt-br')
-            .format(new Date(transaction.created_at))
-            .toString(),
+          formattedDate: new Date(transaction.created_at).toLocaleDateString(
+            'pt-br',
+          ),
         }),
       );
 
@@ -105,15 +105,11 @@ const Dashboard: React.FC = () => {
                   <tr key={transaction.id}>
                     <td className="title">{transaction.title}</td>
                     <td className={transaction.type}>
-                      {transaction.type === 'outcome' && '- '}
-                      {formatValue(transaction.value)}
+                      {transaction.type === 'outcome' && ' - '}
+                      {transaction.formattedValue}
                     </td>
                     <td>{transaction.category.title}</td>
-                    <td>
-                      {Intl.DateTimeFormat('pt-br')
-                        .format(new Date(transaction.created_at))
-                        .toString()}
-                    </td>
+                    <td>{transaction.formattedDate}</td>
                   </tr>
                 ))}
             </tbody>
